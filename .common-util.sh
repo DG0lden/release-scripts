@@ -7,7 +7,7 @@ SCRIPT_PARENT_PATH="$( dirname ${SCRIPT_PATH} )"
 
 source ${SCRIPT_PATH}/.hooks-default.sh
 if [ -f "${SCRIPT_PARENT_PATH}/.release-scripts-hooks.sh" ]; then
-	echo "Found .release-hooks.sh. Using it as master hooks"
+	echo "Found .release-scripts-hooks.sh. Using it as master hooks"
 	source "${SCRIPT_PARENT_PATH}/.release-scripts-hooks.sh"
 else
 	source ${SCRIPT_PATH}/hooks.sh
@@ -36,3 +36,4 @@ function is_branch_existing {
       return 1
     fi
 }
+

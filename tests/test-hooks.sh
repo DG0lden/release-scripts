@@ -40,6 +40,20 @@ function get_master_branch_name {
   echo "master"
 }
 
+# Hook method to define the patter for support branches
+# Parameter $1 - support branch identifer, i.e. 2.x
+# Returns support branches name as text, i.e. support-2.x
+function format_support_branch_name {
+  echo "support-$1"
+}
+
+# Hook method to define the patter for support master branches
+# Parameter $1 - support branch identifer, i.e. 2.x
+# Returns support branches name as text, i.e. master-2.x
+function format_support_master_branch_name {
+  echo "master-$1"
+}
+
 # Hook method to format the release branch name
 # Parameter $1 - version as text
 # Returns the formatted release branch name as text
@@ -57,13 +71,13 @@ function format_hotfix_branch_name {
 # Hook to build the snapshot modules before release
 # You can build and run your tests here to avoid releasing an unstable build
 function build_snapshot_modules {
-  echo "do nothing" >> /dev/null
+  echo "build_snapshot_modules"
 }
 
 # Hook to build the released modules after release
 # You can deploy your artifacts here
 function build_release_modules {
-  echo "do nothing" >> /dev/null
+  echo "build_release_modules"
 }
 
 # Should set version numbers in your modules
