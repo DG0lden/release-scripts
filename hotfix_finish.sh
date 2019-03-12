@@ -48,7 +48,7 @@ git reset --hard
 set_modules_version $HOTFIX_VERSION
 cd ${GIT_REPO_DIR}
 
-if ! git diff-files --quiet --ignore-submodules --
+if ! is_workspace_clean
 then
   # commit hotfix versions
   git commit -am "Release hotfix $HOTFIX_VERSION"
@@ -64,7 +64,7 @@ git reset --hard
 git checkout ${MASTER_BRANCH} && git pull ${REMOTE_REPO}
 git merge --no-edit ${HOTFIX_BRANCH}
 
-# create release tag and push master
+# create release tag
 HOTFIX_TAG=`format_release_tag "${HOTFIX_VERSION}"`
 git tag -a "${HOTFIX_TAG}" -m "Release ${HOTFIX_VERSION}"
 
@@ -75,7 +75,7 @@ NEXT_SNAPSHOT_VERSION=`format_snapshot_version "${NEXT_VERSION}"`
 set_modules_version "${NEXT_SNAPSHOT_VERSION}"
 cd ${GIT_REPO_DIR}
 
-if ! git diff-files --quiet --ignore-submodules --
+if ! is_workspace_clean
 then
   # commit next snapshot versions
   git commit -am "Start next iteration with ${NEXT_SNAPSHOT_VERSION} after hotfix ${HOTFIX_VERSION}"
