@@ -41,6 +41,20 @@ function get_master_branch_name {
   echo "master"
 }
 
+# Hook method to define the patter for support branches
+# Parameter $1 - support branch identifer, i.e. 2.x
+# Returns support branches name as text, i.e. support-2.x
+function format_support_branch_name {
+  echo "support-$1"
+}
+
+# Hook method to define the patter for support master branches
+# Parameter $1 - support branch identifer, i.e. 2.x
+# Returns support branches name as text, i.e. master-2.x
+function format_support_master_branch_name {
+  echo "master-$1"
+}
+
 # Hook method to format the release branch name
 # Parameter $1 - version as text
 # Returns the formatted release branch name as text
